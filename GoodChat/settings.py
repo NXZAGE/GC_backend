@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-_)p15!=#^2jqboajf!c-!6cibb0)n%$6g5e$*@nt(!dx&^0ysd
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['goodchat.pythonanywhere.com']
 
 
 # Application definition

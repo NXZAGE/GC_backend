@@ -4,7 +4,7 @@ from users.models import User
 from .utils import is_in_bookmark
 from users.serializers import UserSerializer 
 
-BASE_MEDIA_URL = 'http://127.0.0.1:8000'
+BASE_MEDIA_URL = 'http://goodchat.pythonanywhere.com'
 class PostSerializer:
     def toDict(post: Post, user: User):
         response = {

@@ -4,7 +4,7 @@ from .utils import get_profile
 
 def imageToUrl(image):
         if image:
-            return f'http://127.0.0.1:8000{image.url}'  
+            return f'http://goodchat.pythonanywhere.com{image.url}'  
         return image
 class UserSerializer:
     def toUserDict(user:User) -> dict:
