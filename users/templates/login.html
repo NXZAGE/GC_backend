@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}<link rel="stylesheet" href="{% static '/css/reg-log.css' %}">{% endblock %}
+{% block title %}Authorization{% endblock %}
+
+{% block content %}
+
+    <div class="reg_box">
+
+        <div class="text_box_rules">
+            <h2 class="rules_head">Rules of the programming club</h2>
+            <p class="rules">
+            <ul>
+                <li>First rule of the programming club - Never talk about programming club.</li>
+                <li>Second  rule of the programming club - Never EVER talk about programming club.</li>
+                <li>Thierd rule of the programming club - If (developer.said() == “COMMIT” or  developer.exhaled() or developer.pushed(commit) == True): Project.Fineshed()</li>
+                <li>Forth rule of the programming club - Only two and I half men work on a project.</li>
+                <li>Fifth rule of the programming club - Commits should go one after another. Not all at once.</li>
+                <li>Sixth rule of the programming club - DO NOT write more than one line of code (time period not included).</li>
+                <li>Seventh rule of the programming club - You should programm as far as you need to not less and absolutely not more.</li>
+                <li>Eighth rule of the programming club - The one who found a bug in the code no metter his specialization back or front is now obliged to debug the whole code.</li>
+            </ul>
+
+
+
+            </p>
+        </div>
+
+        <div class="input_form">
+            <h1 class="reg-header">Authorization</h1><br>
+            <!-- <div>Message: "{{ message }}"</div> -->
+            <form method="POST" class="form-reg">
+                {% csrf_token %}
+                {% for field in form %}
+                <p>{{ field }}</p>
+                <div class="form-error">{{ field.errors }}</div>
+                {% endfor %}
+                {% if message %}
+                <p class="form-error">{{ message }}</p>
+                {% endif %}
+
+                <button type="submit" class="btn_add">Log In</button>
+
+            </form>
+            <a class="auth-link" href="{% url 'registration' %}">No Account?</a>
+        </div>
+    </div>
+
+
+{% endblock %}

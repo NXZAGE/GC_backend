@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}<link rel="stylesheet" href="{% static '/css/find_friends.css' %}">{% endblock %}
+{% block title %}Friends search{% endblock %}
+
+{% block content %}
+	<div class = "search-wrapper">
+		<p class = "search-user-id-input">Your ID: {{ user.id }}</p>
+		<div class="other_users_search">
+		<div class="input_friend">
+		<form method="POST" class="form_friend">
+			{% csrf_token %}
+			{{ form.querry }}
+			<button type="submit" class="btn_message">Search</button>
+		</form>
+
+		</div>
+
+
+
+
+
+
+		{% if response %}
+
+			{% for profile_ in response %}
+
+
+					<a href="{% url 'profile' profile_.id %}" class="user-card-search">
+					<img class ="profile-pic-search"src="{{profile_.avatar.url}}"><br>
+					<p class = "nickname-search">{{ profile_.name }} {{profile_.surname}}</p>
+					<p class = "info-search">{{ profile_.about }}</p>
+					</a>
+
+
+
+			{% endfor %}
+	</div>
+		</div>
+		{% else %}
+			<p class="friend_error">Oops! The user does not exist!</p>
+		{% endif %}
+
+	</div>
+{% endblock %}
+{% block js %}
+<script src="{% static '/js/find_friends.js' %}"></script>
+{% endblock %}

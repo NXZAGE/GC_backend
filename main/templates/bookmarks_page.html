@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+    <link rel="stylesheet" href="{% static '/css/main_page.css' %}">
+    <link rel="stylesheet" href="{% static '/css/post_template.css' %}">
+{% endblock %}
+{% block title %}Bookmarks{% endblock %}
+{% block content %}
+
+    <div class="main_page">
+        {% if posts %}
+            {% for post in posts %}
+            <div class = "main_page_post">
+                <div class="post-box">
+                    <div class="post-header">
+                        <div class="btn_box_post">
+                        <!-- <a class="round heart" disabled href="#" title="Like"></a> -->
+                        <a class="round open" href="/post/{{post.id}}" title="Open Full"><div class="arrow"></div><div class="arrow_diff"></div></a>
+                        {% if post.in_bookmarks %}
+                        <a class="round in_zakladka" href="{% url 'add-delete-bookmark' post.id %}" title="Bookmark"></a>
+                        {% else %}
+                        <a class="round zakladka" href="{% url 'add-delete-bookmark' post.id %}" title="Bookmark"></a>
+                        {% endif %}
+                        </div>
+                        <img class = "author_avatar" src = "{{post.author_photo.url}}">
+                        <a class = "post-author" href="/profile/{{post.author.id}}">{{post.author.name}} {{ post.author.surname}}</a>
+                    </div>
+
+                    <div class="text-wrap">
+                        <div class="post-text">{{ post.content }}</div>
+                    </div>
+
+                    {% if post.photo %}
+                        <img src="{{ post.photo.url }}" class="post-image">
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <div class="zero_bookmarks">
+            <p class="alarm_posts">U do not yet have bookmarks :c </p>
+            <a class="btn_add" href="{% url 'home' %}">Go Back</a>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
+{% block js %}
+<script src="{% static '/js/bookmarks.js' %}"></script>
+{% endblock %}

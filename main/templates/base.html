@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/css/base.css' %}">
+    {% block style %}{% endblock %}
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{% static '/images/kvlogo.png' %}" />
+</head>
+<body>
+<header>
+    <div class = "header_menu">
+        <a href = "{% url 'home' %}" class = "logo_h">
+            <img src = "{% static '/images/logo.png' %}" class = "logo_h" alt = "Home Page">
+        </a>
+    </div>
+    {% if user.is_authenticated %}
+        <div class="auth_box">
+            <img class="image_avatar header_avatar" src="{{self_profile.avatar.url}}" alt="">
+            <a href="{% url 'logout' %}" class="auth_btn ">Log Out</a>
+        </div>
+    {% else %}
+        <div class="auth_box">
+            <a href="{% url 'registration' %}" class="auth_reg_btn">Registration</a>
+            <a href="{% url 'login' %}" class="auth_btn">Log In</a>
+        </div>
+     {% endif %}
+</header>
+<div class = "navigation">
+    <div  class = "side_menu">
+        <div id = "prof" class = "side_icon">
+            <a class = "hr" href = "{% url 'self-profile' %}">
+                <i class="fa-regular fa-user icona"></i>
+            </a>
+        </div>
+        <div  id = "mes" class = "side_icon">
+            <a class = "hr" href = "{% url 'chat-list' %}">
+                <i class="fa-regular fa-comment-dots icona"></i>
+            </a>
+        </div>
+        {% if user.is_authenticated %}
+        <div  id = "friend" class = "side_icon">
+            <a class = "hr" href = "{% url 'friend-list' self_profile.id %}">
+                <i class="fa-solid fa-user-group icona"></i>
+            </a>
+        </div>
+        {% else %}
+        <div  id = "friend" class = "side_icon">
+            <a class = "hr" href = "{% url 'chat-list' %}">
+                <i class="fa-solid fa-user-group icona"></i>
+            </a>
+        </div>
+        {% endif %}
+        <div  id = "set" class = "side_icon">
+            <a class = "hr" href = "{% url 'setting' %}">
+                <i class="fa-solid fa-gear icona"></i>
+            </a>
+        </div>
+        <div id = "glob" class = "side_icon">
+            <a class = "hr" href = "{% url 'home' %}">
+                <i class="fa-solid fa-globe icona"></i>
+            </a>
+        </div>
+        <div  id = "book" class = "side_icon">
+            <a class = "hr" href = "{% url 'bookmarks' %}">
+                <i class="fa-regular fa-bookmark icona"></i>
+            </a>
+        </div>
+        <div  id = "add" class = "side_icon">
+            <a class = "hr" href = "{% url 'addpost' %}">
+                <i class="fa-sharp fa-solid fa-plus icona"></i>
+            </a>
+        </div>
+        <div  id = "f" class = "side_icon">
+            <a class = "hr" href = "{% url 'findfriend' %}">
+                <i class="fa-solid fa-magnifying-glass icona"></i>
+            </a>
+        </div>
+    </div>
+</div>
+<div class = "main">
+    {% block content %}
+    {% endblock %}
+</div>
+<script src="https://kit.fontawesome.com/a5b3356b6d.js" crossorigin="anonymous"></script>
+{% block js %}{% endblock %}
+</body>
+</html>

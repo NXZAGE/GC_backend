@@ -1,0 +1,199 @@
+.container {
+    display: block;
+    height: 80%;
+    width: 80%;
+    color: white;
+    background-color: black;
+    border: solid 2px #8270F2;
+    border-radius: 20px;
+    padding: 3rem;
+    margin: auto;
+    margin-top: 5%;
+}
+.chat-info-title{
+    text-align: center;
+    color: #8270F2;
+}
+.btn-save {
+    color: white;
+    background-color: black;
+    border: solid 2px #8270F2;
+    border-radius: 20px;
+    padding: 1rem;
+	width: 10em;
+	font-size: large;
+	cursor: pointer;
+}
+.btn-discard{
+	color: black;
+    background-color: #8270F2;
+    border: solid 2px #5a4daf;
+    border-radius: 20px;
+    padding: 1rem;
+	width: 10em;
+	font-size: large;
+	cursor: pointer;
+}
+.friendlist_item{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 98%;
+    background-color: black;
+    border: 1px solid #8270F2;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0px 0px 5px #8270F2;
+}
+
+.friend-avatar{
+    margin-left: 2%;
+    object-fit: cover;
+    aspect-ratio: 1/1;
+    width: 10%;
+    border-radius: 100%;
+}
+
+.friend_name{
+    color: #8270F2;
+    width: 20%;
+    text-align: center;
+}
+
+
+.input-file-row {
+	display: flex;
+	margin: 10px auto;
+	border: 2px dashed #8270F2;
+	border-radius: 100%;
+	width: fit-content;
+	height: 10vw;
+}
+.input-file {
+	position: relative;
+	display: inline-block;
+	margin: auto;
+}
+.input-file span {
+	position: relative;
+	cursor: pointer;
+	outline: none;
+	text-decoration: none;
+	font-size: 14px;
+    display: table-cell;
+    vertical-align: middle;
+	color: #8270F2;
+	text-align: center;
+	border-radius: 100%;
+	background-color: black;
+	line-height: 22px;
+	height: 10vw;
+	box-sizing: border-box;
+	border: none;
+	margin: 0;
+	transition: background-color 0.2s;
+	width:10vw;
+}
+.input-file input[type=file] {
+	position: absolute;
+	z-index: -1;
+	opacity: 0;
+	display: block;
+	width: 0;
+	height: 0;
+}
+
+/* Focus */
+.input-file input[type=file]:focus + span {
+	box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+/* Hover/active */
+.input-file:hover span {
+	background-color: #1F1F1F;
+}
+.input-file:active span {
+	background-color: #0F0F0F;
+}
+
+/* Disabled */
+.input-file input[type=file]:disabled + span {
+	background-color: #eee;
+}
+
+/* Список c превью */
+
+.input-file-list-item {
+	display: inline-block;
+	vertical-align: top;
+	position: relative;
+}
+.input-file-list-item img {
+	height: 10vw;
+	border-radius: 100%;
+	aspect-ratio: 1/1;
+	object-fit: cover;
+}
+.input-file-list-name {
+	text-align: center;
+	display: block;
+	font-size: 12px;
+	color: white;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+.input-file-list-remove {
+	color: #fff;
+	text-decoration: none;
+	display: inline-block;
+	position: absolute;
+	padding: 0;
+	margin: 0;
+	top: 5px;
+	right: 5px;
+	background: #ff0202;
+	width: 16px;
+	height: 16px;
+	text-align: center;
+	line-height: 16px;
+	border-radius: 50%;
+}
+
+input[type="text"]{
+	background-color: #000000;
+    border-radius: 12px;
+    border: #8270F2 solid 2px;
+    padding: 15px;
+    color: #797979;
+    width: 250px;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+/* .custom-checkbox {
+	position: absolute;
+	opacity: 0;
+  } */
+
+  
+  .input-chat{
+	display: flex;
+	justify-content: center;
+  }
+  .input-img{
+	display: grid;
+	justify-content: center;
+	margin-top: 2em;
+  }
+
+.settings_info_box{
+    margin-left: 2%;
+    display: block;
+    margin-top: 0%;
+    vertical-align: top;
+}
+.displayed_info{
+    text-align: center;
+}

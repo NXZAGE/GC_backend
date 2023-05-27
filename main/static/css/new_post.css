@@ -1,0 +1,163 @@
+.post-workspace {
+    width: 50%;
+    margin: 0px auto;
+    background: #000000;
+    box-shadow: 0px 4px 4px #8270F2;
+    border-radius: 37px;
+    margin-top: 15vh;
+    margin-bottom: 50px;
+}
+
+.new-post-header {
+    display: flex;
+    justify-content: space-between;
+    background: #000;
+    border-bottom: 1px solid #8270F2;
+    border-radius: 37px 37px 0px 0px;
+}
+
+.text-of-new-post {
+    width: 96%;
+    font-size: 16px;
+    margin: 1%;
+    padding: 1%;
+    background: #000;
+    color: white;
+    border-radius: 14px;
+    transition:all 0.5s;
+    resize: none;
+    border: 2px solid #362982;
+}
+
+.text-of-new-post::-webkit-scrollbar {
+  width: 12px;               /* ширина scrollbar */
+}
+.text-of-new-post::-webkit-scrollbar-track {
+  background: black;        /* цвет дорожки */
+}
+.text-of-new-post::-webkit-scrollbar-thumb {
+  background-color: #8270F2;    /* цвет плашки */
+  border-radius: 17px;       /* закругления плашки */
+  border: 0px 10px 33px #8270F2;  /* padding вокруг плашки */
+}
+
+.text-of-new-post:focus{
+     box-shadow: 0px 15px 20px #362982;
+}
+
+.input-file-row {
+	display: flex;
+	margin: 10px;
+	border: 4px dashed #362982;
+	border-radius: 14px;
+	height: 30vh;
+}
+.input-file {
+	position: relative;
+	display: inline-block;
+	margin: auto;
+}
+.input-file span {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+	outline: none;
+	text-decoration: none;
+	font-size: 14px;
+	vertical-align: middle;
+	color: black;
+	text-align: center;
+	border-radius: 4px;
+	background-color: #8270f2;
+	line-height: 22px;
+	height: 40px;
+	padding: 10px 20px;
+	box-sizing: border-box;
+	border: none;
+	margin: 0;
+	transition: background-color 0.2s;
+}
+.input-file input[type=file] {
+	position: absolute;
+	z-index: -1;
+	opacity: 0;
+	display: block;
+	width: 0;
+	height: 0;
+}
+
+/* Focus */
+.input-file input[type=file]:focus + span {
+	box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+/* Hover/active */
+.input-file:hover span {
+	background-color: #5b4bbe;
+}
+.input-file:active span {
+	background-color: #362982;
+}
+
+/* Disabled */
+.input-file input[type=file]:disabled + span {
+	background-color: #eee;
+}
+
+/* Список c превью */
+
+.input-file-list-item {
+	display: inline-block;
+	vertical-align: top;
+	position: relative;
+}
+.input-file-list-item img {
+	width: 50%;
+	margin: 100px 25%;
+	border-radius: 14px;
+}
+.input-file-list-name {
+	text-align: center;
+	display: block;
+	font-size: 12px;
+	color: white;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+.input-file-list-remove {
+	color: #fff;
+	text-decoration: none;
+	display: inline-block;
+	position: absolute;
+	padding: 0;
+	margin: 0;
+	top: 5px;
+	right: 5px;
+	background: #ff0202;
+	width: 16px;
+	height: 16px;
+	text-align: center;
+	line-height: 16px;
+	border-radius: 50%;
+}
+
+
+.btn_post{
+    background-color: #000000;
+    border-radius: 12px;
+    border: #8270F2 solid 2px;
+    padding: 15px;
+    color: #8270F2;
+    width: 50%;
+    font-size: 20px;
+    transition: all 0.5s;
+    margin: 10px 25%;
+    cursor:pointer;
+}
+
+.btn_post:hover{
+    background-color: #000000;
+    border-radius: 12px;
+    border: #362982 solid 2px;
+    color:#4131a1;
+}

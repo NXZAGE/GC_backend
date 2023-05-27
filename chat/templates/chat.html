@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}<link rel="stylesheet" href="{% static '/css/chat.css' %}">{% endblock %}
+{% block title %}GC | Chat {{ chat.name }}{% endblock %}
+
+{% block content %}
+
+<div class="messenger_box" id="messenger_box">
+    <h2 style="text-align:center;"> Chats </h2>
+    <div class="ur_friend" >
+        <a class = "chat-avatar-div" href = "{{ chat.info_link }}">
+            <img class="friend-user-pic image_avatar" src="{{chat.avatar.url}}">
+        </a>
+        <p>{{chat.name}}</p>
+    </div>
+<div class="messenger_contener">
+    {% for message in messages %}
+            
+            {% if message.isMyown %}
+            <div class="message_own">
+            {% else %}
+            <div class="message">
+
+            {% endif %}
+
+                <div class="chat_texts">
+                <div class="timestamp">
+                    <h2>{{ message.author }}</h2>
+                    <p class="time">{{message.date_create}}</p>
+                </div>
+                <h3 class="message-text">{{ message.content}}</h3>
+                </div>
+            </div>
+    {% endfor %}
+</div>
+    <form class="input-area-mess" method="POST">
+        {% csrf_token %}
+        {% for field in message_form %}
+        {{ field }}
+        {% endfor %}
+        <button class="btn_message">Send</button>
+    </form>
+</div>
+{% endblock %}
+{% block js %}
+<script src="{% static '/js/chat.js' %}"></script>
+{% endblock %}
+</div>

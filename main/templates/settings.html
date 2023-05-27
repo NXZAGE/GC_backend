@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}<link rel="stylesheet" href="{% static '/css/settings.css' %}">{% endblock %}
+{% block title %}Settings{% endblock %}
+
+{% block content %}
+<div class = "setting_page">
+    <a href = "{% url 'edit' %}" class="setting-btn">Profile settings</a>
+    <a href = "{% url 'logout' %}" class="setting-btn">Log Out</a>
+</div>
+{% endblock %}
+{% block js %}
+<script src="{% static '/js/settings.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}<link rel="stylesheet" href="{% static '/css/post_page.css' %}">{% endblock %}
+{% block title %}Posts{% endblock %}
+
+{% block content %}
+<div class = "post-box" style="margin-top:10vh;">
+	<div class = "post-header">
+     	<div class="btn_box_post">
+			{% if post.author.id == self_profile.id %}
+			<a class="round edit" href="{% url 'postedit' post.id %}" title="Edit"></a>
+			<a class="round delete" href="{% url 'postdelete' post.id %}" title="Delete"></a>
+			{% endif %}
+		</div>
+		<a href="{{ post.author.link }}" class = "post-author">{{ post.author.name }}</a>
+	</div>
+
+	<div class = "text-wrap">
+		<p class = "post-text"> {{ post.content }} </p>
+		<div class = "img-marks"></div>
+	</div>
+	{% if post.photo %}
+		<img src="{{ post.photo.url }}" class="post-image">
+	{% endif %}
+	{% if user.is_authenticated %}
+		<form class="input-area-mess" method="POST">
+			{% csrf_token %}
+			{{ form.content }}
+			<button class="btn_message" type="submit">Send</button>
+		</form>
+	{% endif %}
+	{% if comments %}
+	<h1 style="text-align:center; color:white;"> Comments </h1>
+	{% for comment in comments %}
+
+	<div class="comment-box">
+	<div class="timestamp">
+	<p class="comment-author">{{ comment.author.name }} {{ comment.author.surname }}</p>
+	<p class="time">{{ comment.date }}</p>
+	</div>
+
+	<p class="comment-text">{{ comment.content }}</p>
+	</div>
+
+	{% endfor %}
+	{% endif %}
+</div>
+{% endblock %}
+

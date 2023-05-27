@@ -1,0 +1,211 @@
+.messenger_box{
+    background-color: rgba(0,0,0,60%);
+    width: 70%;
+    height: 84vh;
+    margin: 0 auto;
+    color: white;
+    padding-top: calc(7vh + 5px);
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    box-shadow: 0px 0px 33px #8270F2;
+    overflow-y: auto;
+    overflow-x: hidden;
+    font-size: smaller;
+}
+
+.messenger_box::-webkit-scrollbar {
+  width: 10px;
+}
+
+.messenger_box::-webkit-scrollbar-track {
+  background-color: rgba(0,0,0, 0);
+  border-bottom-right-radius: 100px;
+}
+
+.messenger_box::-webkit-scrollbar-thumb {
+  border-top-right-radius: 100px;
+  border-top-left-radius: 100px;
+  border-bottom-right-radius: 300px;
+  background-color: rgba(130, 112, 242, 70%);
+}
+
+.message{
+    position:relative;
+    margin-right: auto;
+    margin-left: 15px;
+    display:flex;
+    align-items:center;
+    justify-content: start;
+    width: 99%;
+    max-width: 500px;
+    transition: all 0.5s;
+    border-radius: 20px;
+    box-shadow: 0px 10px 33px #8270F2;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding-left: 20px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.message_own{
+    position:relative;
+    margin-left: auto;
+    margin-right: 15px;
+    display:flex;
+    align-items:center;
+    justify-content: end;
+    width: 99%;
+    max-width: 500px;
+    padding-right: 20px;
+    padding-left: 20px;
+    transition: all 0.5s;
+    border-radius: 20px;
+    box-shadow: 0px 10px 33px #8270F2;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    text-align: start;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.timestamp{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:500px;
+}
+
+.time{
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: rgba(130, 112, 242, 20%);
+    border-radius: 50px;
+    padding: 5px;
+}
+
+.message_area{
+    width:100%;
+    resize:none;
+    height:150px;
+    background-color:rgba(0,0,0,97%);
+    box-shadow: 0px 10px 40px #8270F2;
+    color: white;
+    border: 1px solid #8270F2;
+    padding: 10px;
+}
+
+.btn_message{
+    background-color: #000000;
+    border: #8270F2 solid 2px;
+    padding: 15px;
+    color: #8270F2;
+    width: 100%;
+    border-bottom-left-radius: 12px;
+    font-size: 20px;
+    transition: all 0.5s;
+
+}
+
+.btn_message:hover{
+    background-color: rgba(0,0,0,60%);
+}
+
+.input-area-mess{
+    position:sticky;
+    bottom:0;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+.ur_friend{
+    height: 7%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position: fixed;
+    top:0.7%;
+    left:50%;
+    transform: translateX(-50%) ;
+    z-index:51;
+    width: 200px;
+    font-size:15px;
+}
+.chat-avatar-div{
+    height:100%
+}
+
+.friend-user-pic {
+    width: 5.88vh;
+    margin-right: 20px;
+    box-shadow: 0px 0px 20px #8270F2;
+    border: 1px solid #8270F2;
+    border-radius: 100%;
+}
+
+.messenger_contener{
+    min-height:calc(80vh - 283px);
+}
+
+.message-text{
+    white-space:pre-wrap;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+
+.container {
+        display: block;
+        height: 80%;
+        width: 80%;
+        color: white;
+        background-color: black;
+        border: solid 2px #8270F2;
+        border-radius: 20px;
+        padding: 3rem;
+        margin: auto;
+        margin-top: 5%;
+}
+.chat-info-title{
+        text-align: center;
+        color: #8270F2;
+}
+.btn-save {
+    color: white;
+    background-color: black;
+    border: solid 2px #8270F2;
+    border-radius: 20px;
+    padding: 1rem;
+	width: 10em;
+	font-size: large;
+	cursor: pointer;
+}
+.btn-discard{
+	color: black;
+    background-color: #8270F2;
+    border: solid 2px #5a4daf;
+    border-radius: 20px;
+    padding: 1rem;
+	width: 10em;
+	font-size: large;
+	cursor: pointer;
+}
+
+.input-img{
+	display: grid;
+	justify-content: center;
+	margin-top: 2em;
+  }
+.chat-name{
+text-align: center;
+}
+
+.chat-avatar-info{
+    margin-left: 2%;
+    width: 200px;
+    border: solid 2px #8270F2;
+    border-radius: 100%;
+    object-fit: cover;
+    aspect-ratio: 1/1;
+    margin: 0 auto;
+}

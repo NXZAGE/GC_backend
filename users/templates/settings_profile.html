@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}<link rel="stylesheet" href="{% static '/css/settings_profile.css' %}">{% endblock %}
+{% block title %}Profile Settings{% endblock %}
+
+{% block content %}
+    <div class="profile_box">
+        <div class = "side_menu_settings">
+            <h1 class = "settings_tittle">Settings</h1>
+            <a href = "#profile_avatar" class = "settings_link">Profile Picture</a>
+            <a href = "#profile_name" class = "settings_link">Name</a>
+            <a href = "#profile_information" class = "settings_link">About</a>
+            <a href = "#profile_data" class = "settings_link">Personal Data</a>
+
+            <div class = "settings_buttons">
+                <button class="settings_btn settings_btn1" onclick="location.href = '{% url 'edit' %}'">Cancel</button>
+                <button class="settings_btn settings_btn2 settings_save" form="edit_form">Apply</button>
+            </div>
+        </div>
+        <div class = "content_settings">
+            <form method="POST" id="edit_form" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div id = "profile_avatar" class = "settings_settings_devider">
+                    <h3 class = "settings_block_tittle">Profile Picture</h3>
+                    <div class = "settings_change_menu">
+                        <div class="input-file-row" id="box-img">
+						    <label class="input-file" id="add_btn" style="visibility: hidden; width: 0px; height: 0px; margin: 0px;">
+						    <input type="file" name="avatar-profile-form" accept="image/*" id="id_photo" value="{{chat_avatar_value}}">
+						    <span>Select an Image</span>
+						    </label>
+					        <div id="input-list" class="input-file-list" style="margin: 0px auto;">
+                                <div class="input-file-list-item">
+                                    <a href="#" onclick="removeFilesItem(this); return false;" class="input-file-list-remove">x</a>
+                                    <img class="input-file-list-img" src="{{avatar_url}}">
+                                </div>
+                            </div>
+				        </div>
+                        <input id = 'is_del' name="is_del" type="text" style="display: none;" value="0">
+                        <div class = "settings_info_box">
+                            <p class ="displayed_info">{{ avatar_name }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id = "profile_name" class = "settings_settings_devider">
+                    <h3 class = "settings_block_tittle">Profile Name</h3>
+                    <div class = "settings_change_menu">
+                        <div class = "settings_info_box">
+                            <!-- <input placeholder="{{ profile.name }}" id = "name_input" type="text" class = "settings_input" required minlength="2" maxlength="14" size="100">
+                            <input placeholder="{{ profile.surname }}" id = "surname_input" type="text" class = "settings_input" required minlength="7" maxlength="14" size="100"> -->
+                            {{ form.name }}
+                            {{ form.surname }}
+                        </div>
+                    </div>
+                </div>
+
+                <div id = "profile_information" class = "settings_settings_devider">
+                    <h3 class = "settings_block_tittle">About</h3>
+                    <div class = "settings_change_menu">
+                        <div class = "settings_info_box">
+                            <!-- <textarea class = "settings_input" rows="5" cols="33">{{ profile.about }}</textarea> -->
+                            {{ form.about }}
+                        </div>
+                    </div>
+                </div>
+
+                <div id = "profile_data" class = "settings_settings_devider">
+                    <h3 class = "settings_block_tittle">Private Data</h3>
+                    <div class = "settings_change_menu">
+                        <div class = "settings_info_box">
+                            <label for = "id_hobby">I like: </label>
+                            <!-- <input id = "settings_hobby" type="text" class = "settings_input" required minlength="2" maxlength="100" size="100" placeholder="{{ profile.hobby }}"></input> -->
+                            {{ form.hobby }}
+                            <label for = "id_hobby">City/Town: </label>
+                            <!-- <input id = "settings_city" type="text" class = "settings_input" required minlength="2" maxlength="20" size="100" placeholder="{{ profile.city }}"></input> -->
+                            {{ form.city }}
+                            <label for = "id_hobby">Education: </label>
+                            <!-- <input id = "settings_edu" type="text" class = "settings_input" required minlength="2" maxlength="40" size="100" placeholder="{{ profile.education }}"></input> -->
+                            {{ form.education }}
+                            <label for = "id_hobby">Company: </label>
+                            <!-- <input id = "settings_company" type="text" class = "settings_input" required minlength="2" maxlength="40" size="100"placeholder="{{ profile.company }}"></input> -->
+                            {{ form.company }}
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+{% block js %}
+<script src="{% static '/js/settings.js' %}"></script>
+<script src="https://snipp.ru/cdn/jquery/2.1.1/jquery.min.js"></script>
+<script src="{% static '/js/settings_profile.js' %}"></script>
+{% endblock %}

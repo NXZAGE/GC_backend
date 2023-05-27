@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}<link rel="stylesheet" href="{% static '/css/new_post.css' %}">{% endblock %}
+{% block title %}Edit Post{% endblock %}
+
+{% block content %}
+	<div class = "post-workspace">
+		<div class = "new-post-header">
+			<button class = "btn_post" form="new-post-form">Edit Post</button>
+		</div>
+		<div class = "new-post-text-img">
+			<form method="POST" id="new-post-form" class="form-add-post" enctype="multipart/form-data">
+				{% csrf_token %}
+				{{ form.is_del }}
+                {{ form.content }}
+				{% if post.photo %}
+				<div class="input-file-row" id = "box-img" style="height: auto;">
+						<label class="input-file" id = "add_btn" style="visibility: hidden; width: 0px; height: 0px; margin: 0px;">
+						{{ form.photo }}
+						<span>Choose Image</span>
+						</label>
+						<div class="input-file-list-item" style="margin: 0px auto;">
+							<img class="input-file-list-img" src="{{ post.photo.url }}">
+							<span class="input-file-list-name">{{post.photo_name}}</span>
+							<a href="#" onclick="removeFilesItem(this); return false;" class="input-file-list-remove">x</a>
+						</div>
+					<div id = "input-list" class="input-file-list"></div>
+				</div>
+				{% else %}
+				<div class="input-file-row" id = "box-img">
+						<label class="input-file" id = "add_btn">
+						{{ form.photo }}
+						<span>Choose Image</span>
+						</label>
+					<div id = "input-list" class="input-file-list">
+					</div>
+				</div>
+				{% endif %}
+			</form>
+		</div>
+	</div>
+{% endblock %}
+{% block js %}
+<script src="https://snipp.ru/cdn/jquery/2.1.1/jquery.min.js"></script>
+<script src="{% static '/js/edit_post.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+    <link rel="stylesheet" href="{% static '/css/profile.css' %}">
+    <link rel="stylesheet" href="{% static '/css/post_template.css' %}">
+{% endblock %}
+{% block title %}GC | {{ profile.name }} {{ profile.surname }} Profile{% endblock %}
+
+{% block content %}
+<!--<div class="content_for_profile"> -->
+<input type="checkbox" id="toggle">
+<div class = "main_page">
+    {% if posts %}
+        {% for post in posts %}
+        <div class = "main_page_post">
+            <div class="post-box">
+                <div class="post-header">
+                    <div class="btn_box_post">
+                    <!-- <a class="round heart" disabled href="#" title="Like"></a> -->
+                    <a class="round open" href="/post/{{post.id}}" title="Open Full"><div class="arrow"></div><div class="arrow_diff"></div></a>
+                    {% if post.in_bookmarks %}
+                    <a class="round in_zakladka" href="{% url 'add-delete-bookmark' post.id %}" title="Bookmark"></a>
+                    {% else %}
+                    <a class="round zakladka" href="{% url 'add-delete-bookmark' post.id %}" title="Bookmark"></a>
+                    {% endif %}
+                    </div>
+                    <img class = "author_avatar" src = "{{ profile.avatar.url }}">
+                    <a class = "post-author" href="{{post.author.link}}">{{post.author.name}}</a>
+                </div>
+
+                <div class="text-wrap">
+                    <div class="post-text">{{ post.content }}</div>
+                </div>
+
+                {% if post.photo %}
+                    <img src="{{ post.photo.url }}" class="post-image">
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+        {% elif profile.id != self_profile.id %}
+            <div class="zero_bookmarks">
+            <p class="alarm_posts">This user yet has no posts :c </p>
+            </div>
+        {% else %}
+            <div class="zero_bookmarks">
+            <p class="alarm_posts">You do yet have no posts :c </p>
+            <a class="btn_add" href="{% url 'addpost' %}">Create post</a>
+            </div>
+        {% endif %}
+	</div>
+    <div class="profile-card">
+        <img src="{{ profile.avatar.url }}" class="profile-pic">
+        <div class="row">
+            <div class = "left">
+                <div class="user-nickname" id="usernick">Name: {{ profile.name }} </div>
+                <div class="user-nickname top" id="usersurname">Lastname: {{ profile.surname }}</div>
+                <div class="user-info unhidden">About: <br> {{ profile.about }} </div>
+                <div class="user-nickname bottom" id="userlike">Hobbies: {{ profile.hobby }}</div>
+                <div class="user-nickname hiddenunckecked">City/Town: {{ profile.city }}</div>
+                <div class="user-nickname hiddenunckecked">Education: {{ profile.education }}</div>
+                <div class="user-nickname hiddenunckecked">Company: {{ profile.company }}</div>
+                {% if profile.id != self_profile.id %}
+                <a class="btn_profile hiddenbtn" href="{% url 'friend-list' profile.id %}">Friendlist</a>
+                <label for="toggle" class="btn_profile">Extend</label>
+                {% endif %}
+            </div>
+            <div class = "right">
+                {% if profile.id != self_profile.id %}
+                <div class="user-info-dif">About: <br> {{ profile.about }} </div>
+                <a class="btn_profile hiddenunckeckedbtn" href="{% url 'open-dialog' profile.id %}">Send a Message</a>
+                {% if add_friend_button %}
+                <a class="btn_profile hiddenunckeckedbtn" href="{% url 'add-friend' profile.id%}">{{ add_friend_button }}</a>
+                {% endif %}
+                {% else %}
+                <div class="user-info">About: <br> {{ profile.about }} </div>
+                {% endif %}
+            </div>
+        </div>
+        {% if profile.id == self_profile.id %}
+            <label for="toggle" class="btn_profile">Extend</label>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+{% block js %}
+<script src="{% static '/js/profile.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}<link rel="stylesheet" href="{% static '/css/chatlist.css' %}">{% endblock %}
+{% block title %}Chats{% endblock %}
+
+{% block content %}
+    <div class="chat_box">
+        <a href="{% url 'new-multychat' %}" class = "create_chat"><i class="fa-solid fa-comment-medical create"></i></a>
+        <h2 style="text-align:center;"> Personal Chats </h2>
+
+        {% for chat in chats %}
+        <a href="{% url 'chat' chat.id %}">
+            <div class="chat_item">
+                <img class="chat-user-pic image_avatar" src="{{chat.avatar.url}}">
+                <div class="chat_texts">
+                <h2>{{ chat.name }}</h2>
+                {% if chat.last_message %}
+                <h3 id="last_message">{{ chat.last_message.content }}</h3>
+                {% endif %}
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+{% endblock %}
+{% block js %}
+<script src="{% static '/js/chatlist.js' %}"></script>
+{% endblock %}

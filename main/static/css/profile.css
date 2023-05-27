@@ -1,0 +1,264 @@
+.profile-card {
+    position: fixed;
+    right: 1%;
+    width: 18%;
+    background: rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 15px #8270F2;
+    border-radius: 50px;
+    transform: translateY(-50%);
+    padding-top: 1%;
+    padding-bottom: 1%;
+    top: 55%;
+    transition: all 1s;
+}
+
+.profile-pic {
+    width: 50%;
+	aspect-ratio: 1/1;
+	object-fit: cover;
+    margin: 0 25%;
+    border-radius: 100%;
+    box-shadow: 0px 0px 30px #8270f2;
+    transition: 1s;
+}
+
+.user-nickname {
+    width: 70%;
+    margin: 10px 15%;
+    text-align: center;
+    background: #fff;
+    border-radius: 16px;
+    padding: 15px 0;
+    transition: all 1s;
+}
+
+.user-info {
+    width: 70%;
+    margin: 10px 15%;
+    max-height: 154px;
+    padding: 20px 0;
+    text-align:center;
+    background: #fff;
+    border-radius: 12px;
+    transition: all 1s;
+}
+
+.user-info-dif {
+    width: 70%;
+    margin: 10px 15%;
+    max-height: 154px;
+    padding: 20px 0;
+    text-align:center;
+    background: #fff;
+    border-radius: 12px;
+    transition: all 1s;
+}
+
+.btn:hover ~ .profile-card-more{
+    display:block;
+}
+
+.profile-card-more{
+    width: 400px;
+    height: 900px;
+    background: #000;
+    box-shadow: 0px 4px 4px #8270F2;
+    border-radius: 50px;
+    padding-top:67px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: -965px;
+    display:none;
+    z-index:1;
+
+}
+
+.form-add-post{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.main_page{
+    width: 85%;
+    border-radius: 5px;
+    margin-top:7vh;
+    margin-bottom:7vh;
+    margin-left : 0;
+    transition: all 1s;
+}
+
+#toggle{
+	appearance : none;
+}
+
+#toggle:checked ~ .profile-card{
+    transition: all 1s;
+	width : 35%;
+}
+
+#toggle:checked ~ .main_page{
+    transition: all 1s;
+	width : 70%;
+}
+.zero_bookmarks{
+    background-color:black;
+    widthL 200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0px 0px 25px #8270F2;
+
+}
+.alarm_posts{
+    color: white;
+}
+
+.btn_posts{
+    color:white;
+}
+.btn_add{
+    background-color: #000000;
+    border-radius: 12px;
+    border: #8270F2 solid 2px;
+    padding: 15px;
+    color: #8270F2;
+    width: 100%;
+    font-size: 20px;
+    transition: all 0.7s;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+}
+
+.btn_add:hover{
+    background: linear-gradient(to top left, #9f49ff, #19087d);
+    border-radius: 12px;
+    color: white;
+    font-weight: bold;
+}
+
+#toggle:checked ~ .profile-card > .user-nickname{
+    transition: all 1s;
+    width : 30%;
+}
+
+#toggle:checked ~ .profile-card > .user-info{
+    transition: all 1s;
+    width : 35%;
+    right : 0;
+    top : 55%;
+    position : absolute;
+}
+
+#toggle:checked ~ .profile-card > .profile-pic {
+    width: 25.714285714285714285714285714286%;
+    margin: 0 37.142857142857142857142857142857%;
+    border-radius: 100%;
+    box-shadow: 0px 0px 30px #8270f2;
+    transition: 1s;
+}
+
+.hiddenunckecked{
+    overflow: hidden;
+    margin: 0 15%;
+    padding: 0;
+    font-size: 0;
+    transition: all 1s;
+}
+
+.hiddenunckecked{
+    overflow: hidden;
+    margin: 0 20%;
+    padding: 0;
+    font-size: 0;
+    transition: all 1s;
+}
+
+.unhidden{
+    transition: all 1s;
+    overflow: hidden;
+}
+
+#toggle:checked ~ .profile-card .hiddenunckecked{
+	width: 70%;
+    margin: 10px 15%;
+    padding: 15px 0;
+    font-size: 100%;
+}
+
+#toggle:checked ~ .profile-card .user-info-dif{
+	height: 58%;
+	max-height: 58%;
+}
+
+.hiddenbtn{
+    height: 0;
+    padding: 0;
+    margin: 0 20%;
+    font-size: 0;
+    border: 0;
+    transition: all 1s;
+    overflow: hidden;
+}
+
+#toggle:checked ~ .profile-card .user-info{
+	height: 85%;
+	max-height: 85%;
+}
+
+#toggle:checked ~ .profile-card .hiddenbtn{
+    background-color: #000000;
+    border-radius: 12px;
+    border: #8270F2 solid 2px;
+    padding: 15px;
+    color: #8270F2;
+    width: 50%;
+    font-size: 20px;
+    transition: all 0.5s;
+    margin: 10px 20%;
+    display: inline-block;
+    height: 24px;
+    text-align: center;
+    transition: all 1s;
+}
+
+#toggle:checked ~ .profile-card .top{
+	margin-bottom: 5px;
+}
+
+#toggle:checked ~ .profile-card .bottom{
+	margin-top: 5px;
+}
+
+
+#toggle:checked ~ .profile-card .unhidden{
+    height: 0;
+    margin: 0 15%;
+    padding: 0;
+    font-size: 0;
+}
+
+.left{
+    width:100%;
+    transition: all 1s;
+}
+.right{
+    overflow: hidden;
+    width:0%;
+    transition: all 1s;
+}
+#toggle:checked ~ .profile-card .left,
+#toggle:checked ~ .profile-card .right {
+    width: 50%;
+}
+
+.row{
+    display:flex;
+}

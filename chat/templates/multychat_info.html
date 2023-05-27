@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static '/css/chat.css' %}">
+<link rel="stylesheet" href="{% static '/css/friendlist.css' %}">
+{% endblock %}
+{% block title %}Info | {{ chat_name }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="chat-info-title">Info</h1>
+    <div class="input-img">
+    <h2 class="chat-name">Name: {{ chat_name }}</h2>
+    <img src="{{ chat_avatar_url }}" class="chat-avatar-info">
+    </div>
+    <div class="members" id="members">
+        <label for="members">Members ({{ members_count }}):</label>
+        {% for member in members %}
+            <div  class="friendlist_item">
+                <img src="{{ member.avatar.url }}" class="friend-avatar">
+                <a class="friend_name" href="{% url 'profile' member.id %}">{{ member.name }} {{member.surname}}</a>
+                <span class="friend_name">{{ member.access_description }}</span>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="members" id="banned">
+        {% if banned %}
+        <label for="banned">Banned ({{ banned_count }}):</label>
+        {% for member in banned %}
+            <div  class="friendlist_item">
+                <img src="{{ member.avatar.url }}" class="friend-avatar">
+                <a class="friend_name" href="{% url 'profile' member.id %}">{{ member.name }} {{member.surname}}</a>
+                <span class="friend_name">{{ member.access_description }}</span>
+            </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+    <br>
+    {% for member in members %}
+        {% if member.access_description == "Creator" and member.id == self_profile.id %}
+        <a class="btn-save" href="{% url 'multychat-settings' chat_id%}">Edit</a>
+        {% endif %}
+    {% endfor %}
+    <a class="btn-discard" href="{% url 'leave-chat' chat_id %}">Exit Chat</a>
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="{% static '/js/chat.js' %}"></script>
+{% endblock %}
