@@ -139,7 +139,7 @@ class EditChat(APIView):
                 chat.avatar = chat_data['photo']
         else: 
             print('setphotodefault')
-            chat.avatar = 'images/DEFAULT_AVATAR.png'
+            chat.avatar = 'images/DEFAULT_CHAT_AVATAR.jpg'
         
         print(dict(chat_data)['members[]'])
         accessed_members = [get_user(id)

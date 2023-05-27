@@ -10,12 +10,12 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ("main", "0001_initial"),
+        ("chat", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name="post",
+            model_name="message",
             name="author",
             field=models.ForeignKey(
                 on_delete=django.db.models.deletion.CASCADE,
@@ -24,35 +24,30 @@ class Migration(migrations.Migration):
             ),
         ),
         migrations.AddField(
-            model_name="comment",
-            name="author",
+            model_name="message",
+            name="chat",
             field=models.ForeignKey(
                 on_delete=django.db.models.deletion.CASCADE,
-                to=settings.AUTH_USER_MODEL,
-                verbose_name="author",
+                to="chat.chat",
+                verbose_name="chat",
             ),
         ),
         migrations.AddField(
-            model_name="comment",
-            name="post",
+            model_name="access",
+            name="chat",
             field=models.ForeignKey(
                 on_delete=django.db.models.deletion.CASCADE,
-                to="main.post",
-                verbose_name="commented post",
+                to="chat.chat",
+                verbose_name="chat",
             ),
         ),
         migrations.AddField(
-            model_name="bookmark",
-            name="post",
-            field=models.ForeignKey(
-                on_delete=django.db.models.deletion.CASCADE, to="main.post"
-            ),
-        ),
-        migrations.AddField(
-            model_name="bookmark",
+            model_name="access",
             name="user",
             field=models.ForeignKey(
-                on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL
+                on_delete=django.db.models.deletion.CASCADE,
+                to=settings.AUTH_USER_MODEL,
+                verbose_name="user",
             ),
         ),
     ]
